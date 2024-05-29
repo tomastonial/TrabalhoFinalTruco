@@ -2,7 +2,6 @@ programa {
   inclua biblioteca Util --> u
   inteiro opc_menu
   cadeia cartas[40]
-  inteiro jogador = 1
   inteiro aux = 0
   inteiro pontuacao_mao1 = 0, pontuacao_mao2 = 0, pontuacao_rodada[1] = {0,0}
   cadeia carta_jogador1[3]
@@ -12,7 +11,6 @@ programa {
     //menu_inicial() //menu inicial
     //menu_jogo()
     mao_cartas()
-    //maos_jogadores()
     
   }
 
@@ -37,7 +35,7 @@ programa {
       se(cartas[aux] == ""){
         aux = u.sorteia(0,39)
         carta_jogador1[i] = cartas[aux]
-      }enquanto(carta_jogador1[i] != "")
+      }
       cartas[aux] = ""
     }
     para(inteiro i = 0; i < 3; i++){
@@ -46,7 +44,7 @@ programa {
       se(cartas[aux] == ""){
         aux = u.sorteia(0,39)
         carta_jogador2[i] = cartas[aux]
-      }enquanto(carta_jogador2[i] != "")
+      }
       cartas[aux] = ""
     }
     escreva(carta_jogador1,"\n")
@@ -60,7 +58,6 @@ programa {
       escreva("Jogador: ",i, "\n")
       escreva("Pontuação Atual: ", pontuacao_rodada[i], "\n")
     }
-    //jogador++
   }
 }
 

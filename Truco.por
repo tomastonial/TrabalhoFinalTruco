@@ -1,17 +1,20 @@
-programa { 
+programa {
   inclua biblioteca Util --> u
   inteiro opc_menu
-  cadeia cartas[40]
+  cadeia cartas[40] = {"4 de Paus", "5 de Paus", "6 de Paus", "7 de Paus", "11 de Paus", "12 de Paus", "13 de Paus", "1 de Paus", "2 de Paus", "3 de Paus", "4 de Copas", "5 de Copas", "6 de Copas", "7 de Copas", "11 de Copas", "12 de Copas", "13 de Copas", "1 de Copas", "2 de Copas", "3 de Copas", "4 de Espada", "5 de Espada", "6 de Espada", "7 de Espada", "11 de Espada", "12 de Espada", "13 de Espada", "1 de Espada", "2 de Espada", "3 de Espada", "4 de Ouro", "5 de Ouro", "6 de Ouro", "7 de Ouro", "11 de Ouro", "12 de Ouro", "13 de Ouro", "1 de Ouro", "2 de Ouro", "3 de Ouro"}
+  inteiro pontuacao_cartas[40] = {28,29,30,31,32,33,34,39,36,37,28,29,30,31,32,33,34,35,36,37,28,29,30,38,32,33,34,40,36,37,28,29,30,37,32,33,34,35,36,37}
+  inteiro pontuacao_cartas1[3]
+  inteiro pontuacao_cartas2[3]
   inteiro aux = 0
-  inteiro pontuacao_mao1 = 0, pontuacao_mao2 = 0, pontuacao_rodada[1] = {0,0}
+  inteiro pontuacao_mao1 = 0, pontuacao_mao2 = 0, pontuacao_rodada1 = 0, pontuacao_rodada2 = 0
   cadeia carta_jogador1[3]
   cadeia carta_jogador2[3]
+  cadeia carta_jogada1
+  cadeia carta_jogada2
+  logico auxiliar = falso
 
   funcao inicio() {
-    //menu_inicial() //menu inicial
-    //menu_jogo()
     mao_cartas()
-    
   }
 
   funcao menu_inicial(){
@@ -26,12 +29,59 @@ programa {
     }
   }
 
+  funcao menu_jogo(){
+    para(inteiro i = 1; i < 3; i++){
+      escreva("Jogador: ",i, "\n")
+      escreva("Pontuação Atual: ", pontuacao_rodada[i], "\n")
+    }
+  }
+
+  funcao jogarCartasUm(){
+    escreva("Qual carta deseja jogar?\n")
+    leia(carta_jogada1)
+    auxiliar = falso
+
+    para(inteiro i = 0; i < 3; i++){
+      se(carta_jogada1 == carta_jogador1[i]){
+        carta_jogador1[i] = "Na Mesa"
+        auxiliar = verdadeiro
+        pare
+      }
+    }
+      se(auxiliar == falso){
+        escreva("Carta Inválida, tente novamente \n")
+      }
+  }
+
+  funcao jogarCartasDois(){
+    escreva("Qual carta deseja jogar?\n")
+        leia(carta_jogada2)
+        auxiliar = falso
+
+        para(inteiro i = 0; i < 3; i++){
+            se(carta_jogada2 == carta_jogador2[i]){
+                carta_jogador2[i] = "Na Mesa"
+                auxiliar = verdadeiro
+                pare
+            }
+        }
+
+        se(auxiliar == falso){
+            escreva("Carta Inválida, tente novamente \n")
+        }
+    }
+
+
   funcao mao_cartas(){
     inteiro aux = 0
-    cadeia cartas[40]={"1 de Ouro","2 de Ouro","3 de Ouro","4 de Ouro","5 de Ouro","6 de Ouro","7 de Ouro","11 de Ouro","12 de Ouro","13 de Ouro","1 de Espada","2 de Espada","3 de Espada","4 de Espada","5 de Espada","6 de Espada","7 de Espada","11 de Espada","12 de Espada","13 de Espada","1 de Paus","2 de Paus","3 de Paus","4 de Paus","5 de Paus","6 de Paus","7 de Paus","11 de Paus","12 de Paus","13 de Paus","1 de Copa","2 de Copa","3 de Copa","4 de Copa","5 de Copa","6 de Copa","7 de Copa","11 de Copa","12 de Copa","13 de Copa"}
+    cadeia cartas_sorteadas[40]
+    para(inteiro i = 0; i<40; i++){
+      cartas_sorteadas[i] = cartas[i]
+    }
     para(inteiro i = 0; i < 3; i ++){
       aux = u.sorteia(0,39)
-      carta_jogador1[i] = cartas[aux]
+      carta_jogador1[i] = cartas_sorteadas[aux]
+      pontuacao_cartas1[i] = pontuacao_cartas[aux]
       se(cartas[aux] == ""){
         aux = u.sorteia(0,39)
         carta_jogador1[i] = cartas[aux]
@@ -40,24 +90,15 @@ programa {
     }
     para(inteiro i = 0; i < 3; i++){
       aux = u.sorteia(0,39)
-      carta_jogador2[i] = cartas[aux]
+      carta_jogador2[i] = cartas_sorteadas[aux]
+      pontuacao_cartas2[i] = pontuacao_cartas[aux]
       se(cartas[aux] == ""){
         aux = u.sorteia(0,39)
         carta_jogador2[i] = cartas[aux]
       }
       cartas[aux] = ""
     }
-    escreva(carta_jogador1,"\n")
-    escreva(carta_jogador2, "\n")
   }
 
-
-
-  funcao menu_jogo(){
-    para(inteiro i = 1; i < 3; i++){
-      escreva("Jogador: ",i, "\n")
-      escreva("Pontuação Atual: ", pontuacao_rodada[i], "\n")
-    }
-  }
 }
 

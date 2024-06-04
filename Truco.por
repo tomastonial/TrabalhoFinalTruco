@@ -14,7 +14,7 @@ programa {
     mao_cartas()
   }
 
-  funcao menu(){
+  funcao menu_inicial(){
     escreva("Bem vindo\n")
     escreva("Escolha uma opção\n")
     escreva("1-Jogar\n")
@@ -22,6 +22,7 @@ programa {
     leia(opc_menu)
     escolha(opc_menu){
       caso 1:
+      
     }
   }
 
@@ -58,6 +59,19 @@ programa {
         carta_jogador2[i] = cartas[aux]
       }
       cartas[aux] = ""
+    }
+  }
+    funcao cartasJogadorUm(){
+    escreva("Cartas Jogador 1: \n")
+    para(inteiro i = 0; i < 3; i++){
+      escreva(carta_jogador1[i],"\n")
+    }
+  }
+
+  funcao cartasJogadorDois(){
+    escreva("Cartas Jogador 2: \n")
+    para(inteiro i = 0; i < 3; i++){
+      escreva(carta_jogador2[i],"\n")
     }
   }
 }

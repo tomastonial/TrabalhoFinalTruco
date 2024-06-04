@@ -14,7 +14,7 @@ programa {
     mao_cartas()
   }
 
-  funcao menu_inicial(){
+  funcao menu(){
     escreva("Bem vindo\n")
     escreva("Escolha uma opção\n")
     escreva("1-Jogar\n")
@@ -22,7 +22,6 @@ programa {
     leia(opc_menu)
     escolha(opc_menu){
       caso 1:
-      
     }
   }
 

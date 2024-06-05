@@ -73,6 +73,41 @@ programa {
     }
   }
 
+  funcao jogarCartasUm(){
+    escreva("Qual carta deseja jogar?\n")
+    leia(carta_jogada1)
+    auxiliar = falso
+
+    para(inteiro i = 0; i < 3; i++){
+      se(carta_jogada1 == carta_jogador1[i]){
+        carta_jogador1[i] = "Na Mesa"
+        auxiliar = verdadeiro
+        pare
+      }
+    }
+      se(auxiliar == falso){
+        escreva("Carta InvÃ¡lida, tente novamente \n")
+      }
+  }
+
+  funcao jogarCartasDois(){
+    escreva("Qual carta deseja jogar?\n")
+        leia(carta_jogada2)
+        auxiliar = falso
+
+        para(inteiro i = 0; i < 3; i++){
+            se(carta_jogada2 == carta_jogador2[i]){
+                carta_jogador2[i] = "Na Mesa"
+                auxiliar = verdadeiro
+                pare
+            }
+        }
+
+        se(auxiliar == falso){
+            escreva("Carta invÃ¡lida, tente novamente \n")
+        }
+    }
+
 
   funcao mao_cartas(){
     inteiro aux = 0

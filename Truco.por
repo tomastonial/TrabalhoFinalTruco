@@ -16,7 +16,7 @@ programa {
   logico auxiliar
 
   funcao inicio() {
-    mao_cartas()
+    menu_inicial()
   }
 
   funcao menu_inicial(){
@@ -27,7 +27,7 @@ programa {
     leia(opc_menu)
     escolha(opc_menu){
       caso 1:
-        menuJogo()
+        menu_jogo()
         pare
 
       caso 2:
@@ -42,7 +42,7 @@ programa {
 
   funcao menu_jogo(){
     para(numero_mao = 0; numero_mao < 12; numero_mao++){
-      maoJogadores()
+      mao_cartas()
       para(numero_rodadas = 0; numero_rodadas < 3; numero_rodadas++){
         carta_jogada1 = ""
         limpa()
@@ -86,7 +86,7 @@ programa {
       }
     }
       se(auxiliar == falso){
-        escreva("Carta InvÃ¡lida, tente novamente \n")
+        escreva("Carta Inválida, tente novamente \n")
       }
   }
 
@@ -104,10 +104,9 @@ programa {
         }
 
         se(auxiliar == falso){
-            escreva("Carta invÃ¡lida, tente novamente \n")
+            escreva("Carta Inválida, tente novamente \n")
         }
     }
-
 
   funcao mao_cartas(){
     inteiro aux = 0
@@ -134,6 +133,48 @@ programa {
         carta_jogador2[i] = cartas[aux]
       }
       cartas[aux] = ""
+    }
+  }
+    funcao cartasJogadorUm(){
+    escreva("Cartas Jogador 1: \n")
+    para(inteiro i = 0; i < 3; i++){
+      escreva(carta_jogador1[i],"\n")
+    }
+  }
+
+  funcao cartasJogadorDois(){
+    escreva("Cartas Jogador 2: \n")
+    para(inteiro i = 0; i < 3; i++){
+      escreva(carta_jogador2[i],"\n")
+    }
+  }
+  funcao verVencedorMao(){
+    se(numero_rodadas == 3){
+      se(pontuacao_rodada1 > pontuacao_rodada2){
+        pontuacao_mao1 ++
+      }
+      senao se(pontuacao_rodada1 < pontuacao_rodada2){
+        pontuacao_mao2 ++
+      }
+      pontuacao_rodada1 = 0
+      pontuacao_rodada2 = 0
+    }
+  }
+   
+
+  funcao verVencedorRodada(){
+    para(inteiro i = 0; i < 3; i++){
+      se(pontuacao_cartas1[i] > pontuacao_cartas2[i]){
+        pontuacao_rodada1 ++
+        pare
+      }
+      senao se(pontuacao_cartas1[i] < pontuacao_cartas2[i]){
+        pontuacao_rodada2 ++
+        pare
+      }
+      senao se(pontuacao_cartas1[i] == pontuacao_cartas2[i]){
+        pare
+      }
     }
   }
 }

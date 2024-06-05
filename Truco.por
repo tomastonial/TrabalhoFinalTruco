@@ -74,4 +74,33 @@ programa {
       escreva(carta_jogador2[i],"\n")
     }
   }
+  funcao verVencedorMao(){
+    se(numero_rodadas == 3){
+      se(pontuacao_rodada1 > pontuacao_rodada2){
+        pontuacao_mao1 ++
+      }
+      senao se(pontuacao_rodada1 < pontuacao_rodada2){
+        pontuacao_mao2 ++
+      }
+      pontuacao_rodada1 = 0
+      pontuacao_rodada2 = 0
+    }
+  }
+   
+
+  funcao verVencedorRodada(){
+    para(inteiro i = 0; i < 3; i++){
+      se(pontuacao_cartas1[i] > pontuacao_cartas2[i]){
+        pontuacao_rodada1 ++
+        pare
+      }
+      senao se(pontuacao_cartas1[i] < pontuacao_cartas2[i]){
+        pontuacao_rodada2 ++
+        pare
+      }
+      senao se(pontuacao_cartas1[i] == pontuacao_cartas2[i]){
+        pare
+      }
+    }
+  }
 }

@@ -6,9 +6,14 @@ programa {
   inteiro pontuacao_cartas1[3]
   inteiro pontuacao_cartas2[3]
   inteiro aux = 0
-  inteiro pontuacao_mao1 = 0, pontuacao_mao2 = 0, pontuacao_rodada[1] = {0,0}
+  inteiro numero_rodadas 
+  inteiro numero_mao
+  inteiro pontuacao_mao1 = 0, pontuacao_mao2 = 0, pontuacao_rodada1 = 0, pontuacao_rodada2 = 0
   cadeia carta_jogador1[3]
   cadeia carta_jogador2[3]
+  cadeia carta_jogada1
+  cadeia carta_jogada2
+  logico auxiliar
 
   funcao inicio() {
     mao_cartas()
@@ -22,17 +27,86 @@ programa {
     leia(opc_menu)
     escolha(opc_menu){
       caso 1:
+        menuJogo()
+        pare
+
+      caso 2:
+        escreva("Obrigado por jogar nosso jogo!")
+        pare
+      caso contrario:
+        escreva("Opção Inválida, tente novamente")
+        pare
       
     }
   }
 
   funcao menu_jogo(){
-    para(inteiro i = 1; i < 3; i++){
-      escreva("Jogador: ",i, "\n")
-      escreva("Pontuação Atual: ", pontuacao_rodada[i], "\n")
+    para(numero_mao = 0; numero_mao < 12; numero_mao++){
+      maoJogadores()
+      para(numero_rodadas = 0; numero_rodadas < 3; numero_rodadas++){
+        carta_jogada1 = ""
+        limpa()
+        escreva("Pontuação da Rodada - Jogador ", 1, ": ", pontuacao_rodada1,"\n")
+        escreva("Pontuação da Rodada - Jogador ", 2, ": ", pontuacao_rodada2,"\n")
+        escreva("Pontuação da Mão - Jogador ", 1, ": ", pontuacao_mao1,"\n")
+        escreva("Pontuação da Mão - Jogador ", 2, ": ", pontuacao_mao2,"\n")
+        auxiliar = falso
+        enquanto(auxiliar == falso){
+          cartasJogadorUm()
+          jogarCartasUm()
+        }
+
+        carta_jogada2 = ""
+        escreva("Pontuação da Rodada - Jogador ", 1, ": ", pontuacao_rodada1,"\n")
+        escreva("Pontuação da Rodada - Jogador ", 2, ": ", pontuacao_rodada2,"\n")
+        escreva("Pontuação da Mão - Jogador ", 1, ": ", pontuacao_mao1,"\n")
+        escreva("Pontuação da Mão - Jogador ", 2, ": ", pontuacao_mao2,"\n")
+        auxiliar = falso
+        faca{
+          cartasJogadorDois()
+          jogarCartasDois()
+        }enquanto(auxiliar == falso)
+       
+        verVencedorRodada()
+      }
+      verVencedorMao()
     }
   }
 
+  funcao jogarCartasUm(){
+    escreva("Qual carta deseja jogar?\n")
+    leia(carta_jogada1)
+    auxiliar = falso
+
+    para(inteiro i = 0; i < 3; i++){
+      se(carta_jogada1 == carta_jogador1[i]){
+        carta_jogador1[i] = "Na Mesa"
+        auxiliar = verdadeiro
+        pare
+      }
+    }
+      se(auxiliar == falso){
+        escreva("Carta InvÃ¡lida, tente novamente \n")
+      }
+  }
+
+  funcao jogarCartasDois(){
+    escreva("Qual carta deseja jogar?\n")
+        leia(carta_jogada2)
+        auxiliar = falso
+
+        para(inteiro i = 0; i < 3; i++){
+            se(carta_jogada2 == carta_jogador2[i]){
+                carta_jogador2[i] = "Na Mesa"
+                auxiliar = verdadeiro
+                pare
+            }
+        }
+
+        se(auxiliar == falso){
+            escreva("Carta invÃ¡lida, tente novamente \n")
+        }
+    }
 
   funcao mao_cartas(){
     inteiro aux = 0
@@ -104,3 +178,4 @@ programa {
     }
   }
 }
+

@@ -16,7 +16,7 @@ programa {
   logico auxiliar
 
   funcao inicio() {
-    mao_cartas()
+    menu_inicial()
   }
 
   funcao menu_inicial(){
@@ -27,7 +27,7 @@ programa {
     leia(opc_menu)
     escolha(opc_menu){
       caso 1:
-        menuJogo()
+        menu_jogo()
         pare
 
       caso 2:
@@ -42,7 +42,7 @@ programa {
 
   funcao menu_jogo(){
     para(numero_mao = 0; numero_mao < 12; numero_mao++){
-      maoJogadores()
+      mao_cartas()
       para(numero_rodadas = 0; numero_rodadas < 3; numero_rodadas++){
         carta_jogada1 = ""
         limpa()
@@ -86,7 +86,7 @@ programa {
       }
     }
       se(auxiliar == falso){
-        escreva("Carta InvÃ¡lida, tente novamente \n")
+        escreva("Carta Inválida, tente novamente \n")
       }
   }
 
@@ -104,7 +104,7 @@ programa {
         }
 
         se(auxiliar == falso){
-            escreva("Carta invÃ¡lida, tente novamente \n")
+            escreva("Carta Inválida, tente novamente \n")
         }
     }
 

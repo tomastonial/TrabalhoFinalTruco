@@ -1,3 +1,4 @@
+
 programa {
   inclua biblioteca Util --> u
   inteiro opc_menu
@@ -15,11 +16,7 @@ programa {
   logico auxiliar
 
   funcao inicio() {
-    mao_cartas()
-    escreva(carta_jogador1,"\n")
-    escreva(pontuacao_cartas1, "\n")
-    escreva(carta_jogador2,"\n")
-    escreva(pontuacao_cartas2, "\n")
+    menu_inicial()
   }
 
   funcao menu_inicial(){
@@ -122,7 +119,7 @@ programa {
       aux = u.sorteia(0,39)
       carta_jogador1[i] = cartas_sorteadas[aux]
       pontuacao_cartas1[i] = pontuacao_cartas[aux]
-      se(cartas[aux] == ""){
+      enquanto(cartas[aux] == ""){
         aux = u.sorteia(0,39)
         carta_jogador1[i] = cartas[aux]
         pontuacao_cartas1[i] = pontuacao_cartas[aux]
@@ -134,7 +131,7 @@ programa {
       aux = u.sorteia(0,39)
       carta_jogador2[i] = cartas_sorteadas[aux]
       pontuacao_cartas2[i] = pontuacao_cartas[aux]
-      se(cartas[aux] == ""){
+      enquanto(cartas[aux] == ""){
         aux = u.sorteia(0,39)
         carta_jogador2[i] = cartas[aux]
         pontuacao_cartas2[i] = pontuacao_cartas[aux]

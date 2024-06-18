@@ -167,18 +167,16 @@ programa {
    
 
   funcao verVencedorRodada(){
-    para(inteiro i = 0; i < 3; i++){
-      se(pontuacao_cartas1[i] > pontuacao_cartas2[i]){
+      se(carta_jogada1 > carta_jogada2){
         pontuacao_rodada1 ++
-        pare
+        
       }
-      senao se(pontuacao_cartas1[i] < pontuacao_cartas2[i]){
+      senao se(carta_jogada1 < carta_jogada2){
         pontuacao_rodada2 ++
-        pare
+        
       }
-      senao se(pontuacao_cartas1[i] == pontuacao_cartas2[i]){
-        pare
+      senao se(carta_jogada1 == carta_jogada2){
+        
       }
-    }
   }
 }

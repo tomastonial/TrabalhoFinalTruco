@@ -127,6 +127,7 @@ programa {
       aux = u.sorteia(0,39)//sorteador de cartas do primeiro jogador 
       carta_jogador1[i] = cartas_sorteadas[aux]
       pontuacao_cartas1[i] = pontuacao_cartas[aux]
+
       enquanto(cartas[aux] == ""){//limpa carta se sortear cartas iguais 
         aux = u.sorteia(0,39)//sorteia novamente 
         carta_jogador1[i] = cartas[aux]

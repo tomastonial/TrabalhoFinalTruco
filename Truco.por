@@ -76,12 +76,13 @@ programa {
       }
       verVencedorMao()
     }
+    menu_inicial()
   }
 
   funcao jogarCartasUm(){
     escreva("Qual carta deseja jogar?\n")
     leia(carta_jogada1)
-    auxiliar = falso
+    auxiliar = falso//adiciona uma variavel logica as cartas para ver se a carta que ele for jogar realmente esta na mao dele 
 
     para(inteiro i = 0; i < 3; i++){
       se(carta_jogada1 == carta_jogador1[i]){
@@ -99,7 +100,7 @@ programa {
   funcao jogarCartasDois(){
     escreva("Qual carta deseja jogar?\n")
     leia(carta_jogada2)
-    auxiliar = falso
+    auxiliar = falso//adiciona uma variavel logica as cartas para ver se a carta que ele for jogar realmente esta na mao dele 
 
     para(inteiro i = 0; i < 3; i++){
       se(carta_jogada2 == carta_jogador2[i]){
@@ -123,11 +124,12 @@ programa {
       cartas_sorteadas[i] = cartas[i]
     }
     para(inteiro i = 0; i < 3; i ++){
-      aux = u.sorteia(0,39)
+      aux = u.sorteia(0,39)//sorteador de cartas do primeiro jogador 
       carta_jogador1[i] = cartas_sorteadas[aux]
       pontuacao_cartas1[i] = pontuacao_cartas[aux]
-      enquanto(cartas[aux] == ""){
-        aux = u.sorteia(0,39)
+
+      enquanto(cartas[aux] == ""){//limpa carta se sortear cartas iguais 
+        aux = u.sorteia(0,39)//sorteia novamente 
         carta_jogador1[i] = cartas[aux]
         pontuacao_cartas1[i] = pontuacao_cartas[aux]
       }
